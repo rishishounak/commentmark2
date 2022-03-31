@@ -25,8 +25,34 @@ def predict():
     #final_features = [np.array(features)]
     vectors= model.transform(features)
     prediction = model_2.predict(vectors)
+    total= len(prediction)
+
+    percent=[0,0,0]
+    g=0;m=0;t=0
+
+    print(prediction)
+
+    for i in prediction:
+
+        if i<0.2:
+            g+=1
+        elif 0.2<i<0.8:
+            m+=1
+        else:
+            t+=1
+    percent[0]= (int)(g/total *100)
+    percent[1]=(int)(m/total *100)
+    percent[2]=(int)(t/total *100)
+
+
     
-    return render_template('index.html', prediction_text='Score {}'.format(prediction))
+    #return render_template('index.html', prediction_text='Score {}'.format(prediction))
+    #data= [20,20,60]
+
+    
+
+    return render_template('index.html', prediction_text=f"{percent[0]},{percent[1]},{percent[2]}")
+
 
 def video_comments(video_id):
     # empty list for storing reply
@@ -67,6 +93,8 @@ def video_comments(video_id):
                 ).execute()
         else:
             break
+
+    #print("Inside youtube"+" "+len(comments_array))
 
     return comments_array
 if __name__ == "__main__":

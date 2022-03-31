@@ -8,6 +8,8 @@
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  
   
 </head>
 
@@ -16,7 +18,7 @@
 	<h1>Toxic Comment Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
+  <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="rate" placeholder="rate" required="required" />
       
         
@@ -27,6 +29,42 @@
    <br>
    <br>
    {{ prediction_text }}
+
+   <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  
+  <script>
+    var xValues = ["Low", "Moderate", "High"];
+    var yValues = '{{prediction_text}}';
+    
+    var b= yValues.split(',').map(function(item) {
+    return parseInt(item, 10);
+});
+console.log(b)
+
+    var barColors = [
+      "#b91d47",
+      "#00aba9",
+      "#2b5797"
+    ];
+
+    new Chart("myChart", {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: b
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Toxic comment classification"
+        }
+      }
+    });
+    </script>
+      
 
  </div>
 
