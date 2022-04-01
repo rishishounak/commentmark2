@@ -79,7 +79,7 @@ def get_comment_authors(api_token, video_id):
 
     return comments_array
 
-a=get_comment_authors(api_key, "s7bgHFRudzo")
-print(len(a))
+#a=get_comment_authors(api_key, "s7bgHFRudzo")
+#print(len(a))
 #BILxV_vrZO0
 #Sxxw3qtb3_g
