@@ -20,7 +20,7 @@ mod_2= pickle.load(open('insult_model.sav','rb'))
 
 
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
