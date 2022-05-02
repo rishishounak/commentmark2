@@ -4,8 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
 gunicorn = "*"
+numpy = "*"
+matplotlib = "*"
+pandas = "*"
+Flask = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+sklearn = "*"
 
 [dev-packages]
 
