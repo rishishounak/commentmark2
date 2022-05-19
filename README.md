@@ -9,6 +9,8 @@ Clone the git repository
 
 then type following in terminal or cmd
 
+>pip install --user pipenv
+
 >pipenv shell
 
 >pipenv install -r requirements.txt
